@@ -1,13 +1,10 @@
 import sys
 from networkx.algorithms import shortest_paths
-
-from networkx.convert import to_networkx_graph; sys.path.append("/home/shachar/Documents/")
 import networkx as nx
 from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
 import os
-
 from TorinaNet.src.core.RxnGraph import RxnGraph
 from TorinaNet.src.core.Specie import Specie
 from TorinaNet.src.core.AcMatrix.BinaryAcMatrix import BinaryAcMatrix
