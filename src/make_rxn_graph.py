@@ -16,8 +16,10 @@ def max_bonds_per_atom(ac_matrix):
     for i in range(len(ac_matrix)):
         counter = 0
         for j, atom in enumerate(ac_matrix.matrix[i]):
-            if not j == i and atom == 1 and not ac_matrix.get_atom(i) == 0:
-                counter += 1
+            if not j == i:
+                # do not count bonds with catalyst for hydrogen and oxygen
+                if not ((atom == 1 or atom == 8) and ac_matrix.get_atom(i) == 0):
+                    counter += 1
         if max_bonds_dict[ac_matrix.get_atom(i)] < counter:
             return False
     return True
@@ -48,4 +50,4 @@ if __name__ == "__main__":
     print("Starting to iterate bonds with max {} macro-iterations".format(max_itr))
     iterator = Iterator()
     rxn_graph = iterator.gererate_rxn_network(reactants, max_itr, ac_filters, conversion_filters, verbose=1)
-    rxn_graph.save_to_file("../data/rxn_net_{}.rxn".format(datetime.now().strftime("%d%m-%Y")))
+    rxn_graph.save_to_file("../data/rxn_net_{}.rxn".format(datetime.now().strftime("%d%m%Y")))
