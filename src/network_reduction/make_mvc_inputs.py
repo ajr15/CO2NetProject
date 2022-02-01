@@ -5,8 +5,8 @@ import openbabel as ob
 import json
 import numpy as np
 import argparse
-from __init__ import DirParser
-from commons import get_graph, get_min_cover_species
+from .. import DirParser
+from ..commons import get_graph, get_min_cover_species
 import settings
 from DirParser.src.utils.obUtils import obmol_to_molecule, ob_read_file_to_molecule, molecule_to_obmol
 from DirParser.src.Base.Molecule import Molecule

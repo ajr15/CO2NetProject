@@ -1,6 +1,7 @@
 # script to calculate distributions of specie's properties in the graph
 import os
 from matplotlib import pyplot as plt
+from __init__ import TorinaNet
 from TorinaNet.src.analyze.visualize import specie_func_distribution
 from TorinaNet.src.core.Specie import Specie
 import settings
@@ -26,6 +27,8 @@ def calc_number_of_atoms(specie: Specie):
 if __name__ == "__main__":
     print("Reading graph from", settings.rxn_graph_path)
     rxn_graph = get_graph(settings.rxn_graph_path, to_networkx=False)
+    print("number of species in graph", len(rxn_graph.species))
+    print("number of reactions in graph", len(rxn_graph.reactions))
     G = rxn_graph.to_networkx_graph()
     # analyzing shortest paths
     population_df = distance_distribution(G, [s.identifier for s in rxn_graph.reactant_species])

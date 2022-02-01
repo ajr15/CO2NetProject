@@ -4,7 +4,7 @@ import networkx as nx
 from networkx.algorithms.approximation import vertex_cover
 import numpy as np
 import random
-from commons import get_graph, distance_distribution
+from ..commons import get_graph, distance_distribution
 import settings
 
 
