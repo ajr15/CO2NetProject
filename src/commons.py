@@ -8,15 +8,18 @@ from TorinaNet.src.core.Specie import Specie as Specie
 from TorinaNet.src.core.AcMatrix.BinaryAcMatrix import BinaryAcMatrix
 from TorinaNet.src.core.RxnGraph import RxnGraph
 
-def get_graph(path, to_networkx=True):
+def get_graph(path, to_networkx=True, reactant_smiles=None):
     read_graph = RxnGraph()
     read_graph.from_file(path)
     if to_networkx:
         return read_graph.to_netwokx_graph()
-    else:
+    elif reactant_smiles is None:
         read_graph.set_reactant_species([Specie.from_ac_matrix(BinaryAcMatrix.from_specie(Specie("[O][C][O]"))), 
                                             Specie.from_ac_matrix(BinaryAcMatrix.from_specie(Specie("[H]"))),
                                             Specie.from_ac_matrix(BinaryAcMatrix.from_specie(Specie("*")))])
+        return read_graph
+    else:
+        read_graph.set_reactant_species([Specie.from_ac_matrix(BinaryAcMatrix.from_specie(Specie(s))) for s in reactant_smiles])
         return read_graph
 
 

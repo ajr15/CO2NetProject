@@ -140,25 +140,6 @@ def print_msg(msg: str):
 def make_orca_input(molecule: Molecule):
     pass
 
-def test():
-    rxn_graph_1 = get_graph(settings.rxn_graph_path, to_networkx=False)
-    G1 = rxn_graph_1.to_netwokx_graph()
-    reactants = [s.identifier for s in rxn_graph_1.reactant_species]
-    mvc_species_1 = get_min_cover_species(G1)
-    
-    with open("./test.txt", "r") as f:
-        old = []
-        for line in f.readlines():
-            old.append(line.strip())
-    for s in old:
-        if not s in mvc_species_1:
-            print("DIFFERENT ! ({})".format(s))
-    for s in mvc_species_1:
-        if not s in old:
-            print("DIFFERENT ! ({})".format(s))
-    import sys; sys.exit()
-
-    
     
 if __name__ == "__main__":
     # making directories
