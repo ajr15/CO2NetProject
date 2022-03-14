@@ -2,7 +2,6 @@
 # tested on generated networks of alkanes of various sizes
 # 2 macro-iterations were used for all networks
 # script used for network generation is in ../make_network/rxn_graphs_for_mvc_test.py
-from cProfile import label
 import os
 import pandas as pd
 from matplotlib import pyplot as plt
